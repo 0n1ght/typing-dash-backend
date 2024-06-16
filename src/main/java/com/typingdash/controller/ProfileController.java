@@ -29,16 +29,15 @@ public class ProfileController {
         return ResponseEntity.ok(accountService.getProfile(accountId));
     }
 
-    @PostMapping("/{accountId}/uploadIcon")
-    public ResponseEntity<?> uploadProfileIcon(@PathVariable Long accountId, @RequestParam("file") MultipartFile file) {
-        try {
-            String filePath = accountService.saveProfileIcon(accountId, file);
-            return ResponseEntity.ok(filePath);
-        } catch (IOException e) {
-            return ResponseEntity.status(500).body("Error while uploading file");
-        }
-    }
-
     //todo
     // update profile data
+//    @PostMapping("/{accountId}/uploadIcon")
+//    public ResponseEntity<?> uploadProfileIcon(@PathVariable Long accountId, @RequestParam("file") MultipartFile file) {
+//        try {
+//            String filePath = accountService.saveProfileIcon(accountId, file);
+//            return ResponseEntity.ok(filePath);
+//        } catch (IOException e) {
+//            return ResponseEntity.status(500).body("Error while uploading file");
+//        }
+//    }
 }
