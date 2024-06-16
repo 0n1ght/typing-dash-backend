@@ -1,0 +1,180 @@
+Hola, ¿cómo estás?
+Buenos días, ¿qué tal?
+Me llamo María.
+¿Cómo te llamas?
+Tengo hambre.
+Quiero comer.
+¿Dónde está el baño?
+El perro es grande.
+La casa es bonita.
+Mi libro es rojo.
+La comida está caliente.
+El sol brilla.
+Tengo frío.
+El agua es fresca.
+¿Dónde vives?
+¿Cómo estuvo tu día?
+Hoy es lunes.
+Mañana es martes.
+El gato es pequeño.
+La mesa es grande.
+Me gusta bailar.
+Vamos al parque.
+La fiesta es divertida.
+¿Cuántos años tienes?
+Mi hermana tiene diez años.
+El cielo está despejado.
+Hace calor.
+Tengo sueño.
+La pizza está deliciosa.
+La silla es cómoda.
+¿Qué hora es?
+Son las tres de la tarde.
+El tren llega pronto.
+El niño juega afuera.
+La naranja es jugosa.
+Me gusta nadar.
+El pescado es sabroso.
+El bebé llora.
+El árbol es alto.
+La flor es bonita.
+El agua está fría.
+El pájaro canta.
+La comida está lista.
+Tengo sed.
+La leche es blanca.
+Me gusta dibujar.
+El oso es peludo.
+La montaña es alta.
+El tren está lleno.
+El sol se pone.
+El cielo está oscuro.
+El coche es rápido.
+La tierra es redonda.
+El perro ladra.
+Tengo calor.
+La música es bonita.
+La pelota es redonda.
+La ventana está abierta.
+El libro es interesante.
+El reloj está roto.
+La silla está vacía.
+La mesa está limpia.
+El agua está sucia.
+El hombre camina.
+El bebé duerme.
+La mamá cocina.
+El sol sale.
+El gato duerme.
+La luna brilla.
+El carro es grande.
+La puerta está cerrada.
+El avión vuela.
+La familia es feliz.
+La casa está limpia.
+El teléfono suena.
+La televisión está encendida.
+La ropa está sucia.
+La cama está desordenada.
+El café está caliente.
+El pan está fresco.
+La fruta está madura.
+El libro está abierto.
+La mesa está sucia.
+El juguete está roto.
+El gato está dormido.
+La flor está marchita.
+El árbol está verde.
+El agua está caliente.
+La comida está fría.
+El coche está sucio.
+El perro está mojado.
+La película es emocionante.
+El cuadro es bonito.
+El río está tranquilo.
+El puente está roto.
+El aire está fresco.
+El viento sopla.
+El cielo está despejado.
+La lluvia cae.
+El trueno suena.
+El relámpago brilla.
+El arcoíris aparece.
+El sol brilla.
+La luna luce.
+El mar está calmo.
+El barco navega.
+El pez nada.
+La ola rompe.
+La arena es suave.
+El castillo se construye.
+El sol se pone.
+El cielo se oscurece.
+Las estrellas brillan.
+La noche llega.
+La luna sale.
+Los animales duermen.
+Los pájaros cantan.
+Las flores cierran.
+Las luces se apagan.
+La ciudad se calma.
+La tranquilidad reina.
+Los sueños comienzan.
+La paz se siente.
+El silencio envuelve.
+La oscuridad domina.
+El mundo descansa.
+La naturaleza duerme.
+La vida se detiene.
+El tiempo transcurre.
+El reloj marca.
+El tic tac suena.
+Las horas pasan.
+Los minutos avanzan.
+Los segundos se van.
+El día termina.
+La noche avanza.
+El sueño llama.
+El descanso llega.
+La mente reposa.
+El cuerpo se relaja.
+Los sueños llegan.
+Las aventuras comienzan.
+Los recuerdos se forman.
+Las experiencias se viven.
+La imaginación vuela.
+Los pensamientos fluyen.
+Las emociones se mezclan.
+Los sentimientos afloran.
+La vida se disfruta.
+El amor florece.
+La amistad perdura.
+La alegría contagia.
+La felicidad se comparte.
+La sonrisa ilumina.
+El abrazo reconforta.
+La caricia calma.
+El beso apasiona.
+La pasión arde.
+El deseo enciende.
+La llama crece.
+El fuego quema.
+La chispa salta.
+La energía fluye.
+La fuerza impulsa.
+El poder domina.
+La voluntad triunfa.
+La determinación vence.
+La perseverancia persiste.
+El éxito llega.
+La meta se alcanza.
+El logro se celebra.
+La victoria se disfruta.
+La satisfacción llena.
+El orgullo embriaga.
+La gratitud agradece.
+El reconocimiento honra.
+La admiración inspira.
+La humildad enseña.
+La sabiduría guía.
+La experiencia enseña.

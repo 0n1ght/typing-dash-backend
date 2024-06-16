@@ -1,0 +1,9 @@
+todo
+-profile data update (service methods + controller)
+-forgot password, change email
+
+-generowanie textu by AI biorac pod uwage paratetry
+
+API doc
+
+mysql database
