@@ -1,10 +1,22 @@
 todo
-today:
--profile data update (service methods + controller)
--forgot password, change email
-
-later:
--generowanie textu by AI biorac pod uwage paratetry
 -mysql database
 
-API doc
+backend
+-profile icon
+-forgot password, change email
+-generowanie textu by AI biorac pod uwage paratetry
+
+frontend
+-multiplayer mode
+-colors
+-filters pane
+-api connection
+-multiplayers bots
+
+general
+-patronite
+-support@typingdash.com email
+
+?
+notifications
+competitive play (lans/multiplayer with code)

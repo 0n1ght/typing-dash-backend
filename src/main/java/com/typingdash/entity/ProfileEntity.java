@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
 import java.util.Stack;
 
 @Embeddable
@@ -17,7 +18,7 @@ public class ProfileEntity {
     private short currentSpeed = 0;
     private short highestSpeed = 0;
     private int testsCompleted = 0;
-    private Stack<Short> shortTestsHistory = new Stack<>();
+    private Queue<Short> shortTestsHistory = new LinkedList<>();
     private List<Short> longTestsHistory = new LinkedList<>();
     private String iconPath;
 

@@ -1,6 +1,7 @@
 package com.typingdash.controller;
 
 import com.typingdash.dto.SignUpRequest;
+import com.typingdash.entity.AccountEntity;
 import com.typingdash.service.AccountService;
 import lombok.RequiredArgsConstructor;
 import org.jetbrains.annotations.NotNull;
@@ -38,7 +39,46 @@ public class AccountController {
     }
 
     //todo change acc and profile data
-    @PutMapping("/change-nickname")
+    @PutMapping("/change-email")
+    public ResponseEntity<String> changeEmail(@RequestBody Map<String, String> request) {
+        try {
+            String newEmail = request.get("newEmail");
+
+            Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+            String email = authentication.getName();
+
+            AccountEntity accountEntity = accountService.findByEmail(email);
+            accountEntity.setEmail(newEmail);
+
+            accountService.updateAccount(accountEntity);
+
+            return ResponseEntity.status(HttpStatus.OK).body("Email changed");
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Error during changing email. Try again later");
+        }
+    }
+
+    @PutMapping("/change-password")
+    public ResponseEntity<String> changePassword(@RequestBody Map<String, String> request) {
+        try {
+            String newPassword = request.get("newPassword");
+
+            Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+            String email = authentication.getName();
+
+            AccountEntity accountEntity = accountService.findByEmail(email);
+            accountEntity.setPassword(newPassword);
+
+            accountService.updateAccount(accountEntity);
+
+            return ResponseEntity.status(HttpStatus.OK).body("Password changed");
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Error during changing password. Try again later");
+        }
+    }
+
+
+    @PutMapping("/update-nickname")
     public ResponseEntity<String> updateNickname(@RequestBody Map<String, String> request) {
         try {
             String newNickname = request.get("newNickname");
@@ -46,45 +86,95 @@ public class AccountController {
             Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
             String email = authentication.getName();
 
-            accountService.changeNick(email, newNickname);
+            AccountEntity accountEntity = accountService.findByEmail(email);
+            accountEntity.getProfileEntity().setNickname(newNickname);
 
-            return ResponseEntity.status(HttpStatus.OK).body("Nickname changed");
+            accountService.updateAccount(accountEntity);
+
+            return ResponseEntity.status(HttpStatus.OK).body("Nickname updated");
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Error during changing nickname. Try again later");
         }
     }
 
-    @PutMapping("/change-nickname")
-    public ResponseEntity<String> changeEmail(@RequestBody Map<String, String> request) {
+    @PutMapping("/update-lvl")
+    public ResponseEntity<String> updateLvl(@RequestBody Map<String, String> request) {
         try {
-            String newNickname = request.get("newNickname");
+            String newLvl = request.get("newLvl");
 
             Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
             String email = authentication.getName();
 
-            accountService.changeNick(email, newNickname);
+            AccountEntity accountEntity = accountService.findByEmail(email);
+            accountEntity.getProfileEntity().setLvl(Integer.parseInt(newLvl));
 
-            return ResponseEntity.status(HttpStatus.OK).body("Nickname changed");
+            accountService.updateAccount(accountEntity);
+
+            return ResponseEntity.status(HttpStatus.OK).body("Level updated");
         } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Error during changing nickname. Try again later");
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Error during changing Level. Try again later");
         }
     }
 
-    @PutMapping("/change-nickname")
-    public ResponseEntity<String> changePassword(@RequestBody Map<String, String> request) {
+    @PutMapping("/update-highestSpeed")
+    public ResponseEntity<String> updateHighestSpeed(@RequestBody Map<String, String> request) {
         try {
-            String newNickname = request.get("newNickname");
+            String newHighestSpeed = request.get("newHighestSpeed");
 
             Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
             String email = authentication.getName();
 
-            accountService.changeNick(email, newNickname);
+            AccountEntity accountEntity = accountService.findByEmail(email);
+            accountEntity.getProfileEntity().setHighestSpeed(Short.parseShort(newHighestSpeed));
 
-            return ResponseEntity.status(HttpStatus.OK).body("Nickname changed");
+            accountService.updateAccount(accountEntity);
+
+            return ResponseEntity.status(HttpStatus.OK).body("Highest Speed updated");
         } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Error during changing nickname. Try again later");
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Error during changing Highest Speed. Try again later");
         }
     }
 
+    @PutMapping("/update-testsCompleted")
+    public ResponseEntity<String> updateTestsCompleted(@RequestBody Map<String, String> request) {
+        try {
+            String newTestsCompleted = request.get("newTestsCompleted");
+
+            Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+            String email = authentication.getName();
+
+            AccountEntity accountEntity = accountService.findByEmail(email);
+            accountEntity.getProfileEntity().setTestsCompleted(Integer.parseInt(newTestsCompleted));
+
+            accountService.updateAccount(accountEntity);
+
+            return ResponseEntity.status(HttpStatus.OK).body("Tests Completed updated");
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Error during changing Tests Completed. Try again later");
+        }
+    }
+
+    @PutMapping("/add-to-history")
+    public ResponseEntity<String> addTestToHistory(@RequestBody Map<String, String> request) {
+        try {
+            String newSpeed = request.get("newSpeed");
+
+            Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+            String email = authentication.getName();
+
+            AccountEntity accountEntity = accountService.findByEmail(email);
+            accountEntity.getProfileEntity().getLongTestsHistory().add(Short.parseShort(newSpeed));
+            accountEntity.getProfileEntity().getShortTestsHistory().add(Short.parseShort(newSpeed));
+            if (accountEntity.getProfileEntity().getShortTestsHistory().size() > 20) {
+                accountEntity.getProfileEntity().getShortTestsHistory().poll();
+            }
+
+            accountService.updateAccount(accountEntity);
+
+            return ResponseEntity.status(HttpStatus.OK).body("New Test added to History");
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Error during adding New Test to History. Try again later");
+        }
+    }
 
 }
