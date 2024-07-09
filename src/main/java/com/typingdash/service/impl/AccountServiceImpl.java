@@ -78,4 +78,11 @@ public class AccountServiceImpl implements AccountService {
 
         return fileName;
     }
+
+    @Override
+    public void changeNick(String email, String newNick) {
+        AccountEntity accountEntity = accountRepo.findByEmail(email).orElseThrow();
+        accountEntity.getProfileEntity().setNickname(newNick);
+        accountRepo.save(accountEntity);
+    }
 }

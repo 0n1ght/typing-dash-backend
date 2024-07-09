@@ -1,9 +1,10 @@
 todo
+today:
 -profile data update (service methods + controller)
 -forgot password, change email
 
+later:
 -generowanie textu by AI biorac pod uwage paratetry
+-mysql database
 
 API doc
-
-mysql database
