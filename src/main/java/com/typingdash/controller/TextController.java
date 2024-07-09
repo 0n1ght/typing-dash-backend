@@ -61,6 +61,7 @@ public class TextController {
 
     @GetMapping("/generate-topic-text")
     public ResponseEntity<String> generateText(@RequestParam String topic) {
+
         try {
             String response = chatGptService.generateText(topic);
             return ResponseEntity.ok(response);

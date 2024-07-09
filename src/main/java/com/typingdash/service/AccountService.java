@@ -14,7 +14,6 @@ public interface AccountService {
     boolean validateNickname(String nick);
     ProfileEntity getProfile(Long accountId) throws IOException;
     List<ProfileEntity> getTop50ProfilesByCurrentSpeed();
-    String saveProfileIcon(Long accountId, MultipartFile file) throws IOException;
     AccountEntity findByEmail(String email);
     void updateAccount(AccountEntity accountEntity);
 }

@@ -21,16 +21,4 @@ public class ProfileController {
     public ResponseEntity<?> getProfile(@PathVariable Long accountId) throws IOException {
         return ResponseEntity.ok(accountService.getProfile(accountId));
     }
-
-    //todo
-    // update profile data
-//    @PostMapping("/{accountId}/uploadIcon")
-//    public ResponseEntity<?> uploadProfileIcon(@PathVariable Long accountId, @RequestParam("file") MultipartFile file) {
-//        try {
-//            String filePath = accountService.saveProfileIcon(accountId, file);
-//            return ResponseEntity.ok(filePath);
-//        } catch (IOException e) {
-//            return ResponseEntity.status(500).body("Error while uploading file");
-//        }
-//    }
 }

@@ -1,43 +1,54 @@
 package com.typingdash.service.impl;
 
 import com.typingdash.service.ChatGptService;
-import okhttp3.*;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.*;
 import org.springframework.stereotype.Service;
-import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
-
-import java.io.IOException;
+import org.springframework.web.client.RestTemplate;
 
 @Service
+@Slf4j
 public class ChatGptServiceImpl implements ChatGptService {
 
     @Value("${openai.api.key}")
-    private String apiKey;
+    private String openaiApiKey;
 
-    private final OkHttpClient client = new OkHttpClient();
+    private final RestTemplate restTemplate;
 
-    public String generateText(String topic) throws IOException {
-        String jsonInputString = "{\"prompt\": \"" + topic + "\", \"max_tokens\": 100}";
+    public ChatGptServiceImpl(RestTemplate restTemplate) {
+        this.restTemplate = restTemplate;
+    }
 
-        RequestBody body = RequestBody.create(
-                jsonInputString, MediaType.parse("application/json"));
+    @Override
+    public String generateText(String topic) {
+        String prompt = "Write a summary about " + topic;
 
-        Request request = new Request.Builder()
-                .url("https://api.openai.com/v1/engines/davinci-codex/completions")
-                .post(body)
-                .addHeader("Authorization", "Bearer " + apiKey)
-                .addHeader("Content-Type", "application/json")
-                .build();
+        // Ustawienie nagłówków HTTP
+        HttpHeaders headers = new HttpHeaders();
+        headers.set("Authorization", "Bearer " + openaiApiKey);
+        headers.set("Content-Type", "application/json");
 
-        try (Response response = client.newCall(request).execute()) {
-            if (!response.isSuccessful()) throw new IOException("Unexpected code " + response);
+        // Utworzenie żądania HTTP
+        String requestBody = "{\"model\":\"text-davinci-003\",\"prompt\":\"" + prompt + "\",\"max_tokens\":150}";
+        HttpEntity<String> entity = new HttpEntity<>(requestBody, headers);
 
-            assert response.body() != null;
-            String responseBody = response.body().string();
-            ObjectMapper mapper = new ObjectMapper();
-            JsonNode rootNode = mapper.readTree(responseBody);
-            return rootNode.path("choices").get(0).path("text").asText();
+        // Użycie RestTemplate do wysłania żądania POST do OpenAI API
+        String openaiEndpoint = "https://api.openai.com/v1/completions";
+        ResponseEntity<String> response;
+        try {
+            response = restTemplate.exchange(openaiEndpoint, HttpMethod.POST, entity, String.class);
+        } catch (Exception e) {
+            log.error("Błąd podczas wywoływania API OpenAI: " + e.getMessage());
+            return "Error generating text: " + e.getMessage();
+        }
+
+        // Obsługa odpowiedzi
+        if (response.getStatusCode().is2xxSuccessful()) {
+            return response.getBody();
+        } else {
+            log.error("Błąd podczas wywoływania API OpenAI: " + response.getStatusCode());
+            return "Error generating text: Unexpected status code " + response.getStatusCode();
         }
     }
 }

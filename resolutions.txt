@@ -1,8 +1,6 @@
 todo
 
 backend
--generowanie textu by AI biorac pod uwage paratetry
--profile icon
 -forgot password, change email
 
 frontend
@@ -11,11 +9,11 @@ frontend
 -filters pane
 -api connection
 -multiplayers bots
+-zapisywanie profile icon i wysylanie sciezki do backendu
 
 general
 -patronite
 -support@typingdash.com email
 
 ?
-notifications
-competitive play (lans/multiplayer with code)
+-generowanie textu by AI biorac pod uwage parametry

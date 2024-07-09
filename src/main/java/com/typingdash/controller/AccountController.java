@@ -177,4 +177,23 @@ public class AccountController {
         }
     }
 
+    @PutMapping("/update-icon-path")
+    public ResponseEntity<String> updateIconPath(@RequestBody Map<String, String> request) {
+        try {
+            String newIconPath = request.get("newPath");
+
+            Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+            String email = authentication.getName();
+
+            AccountEntity accountEntity = accountService.findByEmail(email);
+            accountEntity.getProfileEntity().setIconPath(newIconPath);
+
+            accountService.updateAccount(accountEntity);
+
+            return ResponseEntity.status(HttpStatus.OK).body("New Test added to History");
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Error during adding New Test to History. Try again later");
+        }
+    }
+
 }

@@ -57,28 +57,6 @@ public class AccountServiceImpl implements AccountService {
         return accountRepo.findTop50ProfilesByOrderByCurrentSpeedDesc();
     }
 
-    @Override
-    public String saveProfileIcon(Long accountId, MultipartFile file) throws IOException {
-        AccountEntity account = accountRepo.findById(accountId)
-                .orElseThrow(() -> new NoSuchElementException("Account not found with id: " + accountId));
-
-        String uploadDir = "profile-icons/";
-        File dir = new File(uploadDir);
-        if (!dir.exists()) {
-            dir.mkdirs();
-        }
-
-        String fileName = UUID.randomUUID().toString() + "_" + file.getOriginalFilename();
-        File serverFile = new File(uploadDir + fileName);
-        file.transferTo(serverFile);
-
-        ProfileEntity profile = account.getProfileEntity();
-        profile.setIconPath(fileName);
-        accountRepo.save(account);
-
-        return fileName;
-    }
-
     public void changeNick(String email, String newNick) {
         AccountEntity accountEntity = accountRepo.findByEmail(email).orElseThrow();
         accountEntity.getProfileEntity().setNickname(newNick);
