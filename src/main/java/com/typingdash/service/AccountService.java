@@ -3,7 +3,6 @@ package com.typingdash.service;
 import com.typingdash.dto.SignUpRequest;
 import com.typingdash.entity.AccountEntity;
 import com.typingdash.entity.ProfileEntity;
-import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.util.List;
