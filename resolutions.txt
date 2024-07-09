@@ -1,19 +1,2 @@
-todo
-
-backend
--forgot password, change email
-
-frontend
--multiplayer mode
--colors
--filters pane
--api connection
--multiplayers bots
--zapisywanie profile icon i wysylanie sciezki do backendu
-
-general
--patronite
--support@typingdash.com email
-
-?
--generowanie textu by AI biorac pod uwage parametry
+forgot password
+multiplayer (websockets, bots)

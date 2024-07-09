@@ -38,7 +38,7 @@ public class AccountController {
         }
     }
 
-    //todo change acc and profile data
+
     @PutMapping("/change-email")
     public ResponseEntity<String> changeEmail(@RequestBody Map<String, String> request) {
         try {
