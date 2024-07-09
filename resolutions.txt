@@ -1,10 +1,9 @@
 todo
--mysql database
 
 backend
+-generowanie textu by AI biorac pod uwage paratetry
 -profile icon
 -forgot password, change email
--generowanie textu by AI biorac pod uwage paratetry
 
 frontend
 -multiplayer mode
