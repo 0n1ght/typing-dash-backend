@@ -166,7 +166,7 @@ public class AccountController {
             accountEntity.getProfileEntity().getLongTestsHistory().add(Short.parseShort(newSpeed));
             accountEntity.getProfileEntity().getShortTestsHistory().add(Short.parseShort(newSpeed));
             if (accountEntity.getProfileEntity().getShortTestsHistory().size() > 20) {
-                accountEntity.getProfileEntity().getShortTestsHistory().poll();
+                accountEntity.getProfileEntity().getShortTestsHistory().removeFirst();
             }
 
             accountService.updateAccount(accountEntity);

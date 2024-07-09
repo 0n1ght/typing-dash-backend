@@ -18,7 +18,7 @@ public class ProfileEntity {
     private short currentSpeed = 0;
     private short highestSpeed = 0;
     private int testsCompleted = 0;
-    private Queue<Short> shortTestsHistory = new LinkedList<>();
+    private List<Short> shortTestsHistory = new LinkedList<>();
     private List<Short> longTestsHistory = new LinkedList<>();
     private String iconPath;
 
