@@ -15,6 +15,7 @@ import org.slf4j.LoggerFactory;
 import java.io.IOException;
 import java.util.List;
 import java.util.NoSuchElementException;
+import java.util.Random;
 
 @Service
 @RequiredArgsConstructor
@@ -69,4 +70,21 @@ public class AccountServiceImpl implements AccountService {
     public void updateAccount(AccountEntity accountEntity) {
         accountRepo.save(accountEntity);
     }
+
+    @Override
+    public int generateToken(String email) {
+        AccountEntity account = accountRepo.findByEmail(email).orElseThrow();
+        account.token = (new Random()).nextInt(900000)+100000;
+        accountRepo.save(account);
+        return account.token;
+    }
+
+    @Override
+    public void changePassword(String email, String password) {
+        AccountEntity account = accountRepo.findByEmail(email).orElseThrow();
+        account.setPassword(password);
+        account.setToken(0);
+        accountRepo.save(account);
+    }
+
 }

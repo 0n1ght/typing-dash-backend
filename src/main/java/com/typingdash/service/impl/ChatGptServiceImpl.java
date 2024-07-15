@@ -14,11 +14,7 @@ public class ChatGptServiceImpl implements ChatGptService {
     @Value("${openai.api.key}")
     private String openaiApiKey;
 
-    private final RestTemplate restTemplate;
-
-    public ChatGptServiceImpl(RestTemplate restTemplate) {
-        this.restTemplate = restTemplate;
-    }
+    private final RestTemplate restTemplate = new RestTemplate();
 
     @Override
     public String generateText(String topic) {

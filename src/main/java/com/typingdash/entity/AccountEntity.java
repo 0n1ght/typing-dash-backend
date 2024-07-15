@@ -22,4 +22,7 @@ public class AccountEntity {
     @Embedded
     @Column(nullable = false)
     private ProfileEntity profileEntity;
+
+    @Column
+    public int token = 0;
 }

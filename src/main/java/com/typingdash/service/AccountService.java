@@ -15,4 +15,6 @@ public interface AccountService {
     List<ProfileEntity> getTop50ProfilesByCurrentSpeed();
     AccountEntity findByEmail(String email);
     void updateAccount(AccountEntity accountEntity);
+    int generateToken(String email);
+    void changePassword(String email, String password);
 }
