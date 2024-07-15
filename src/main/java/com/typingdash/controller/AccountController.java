@@ -13,6 +13,9 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 @RestController
 @RequestMapping("/account")
@@ -207,37 +210,35 @@ public class AccountController {
 
         if(accountToken == Integer.parseInt(request.get("token")) && accountToken != 0) {
             accountService.changePassword(request.get("email"), request.get("newPass"));
-            return ResponseEntity.ok("Email changed");
+            return ResponseEntity.ok("Password changed");
         }
         return ResponseEntity.badRequest().body("Error during changing email");
     }
 
     @PostMapping("/reset-password/{email}")
     public ResponseEntity<String> passwordResetEmail(@PathVariable String email) {
-
-//        new Thread(() -> {
-//            try {
-//                Thread.sleep(3000);
-//            } catch (InterruptedException e) {
-//                throw new RuntimeException(e);
-//            }
-//            accountService.changePassword(email, accountService.findByEmail(email).getPassword());
-//        }).start();
-
-        int token;
         try {
-            token = accountService.generateToken(email);
-        } catch (Exception e) {
-            return ResponseEntity.badRequest().body("Email not found");
-        }
-
-
-        try {
+            int token = accountService.generateToken(email);
             emailService.sendToken(token);
-            return ResponseEntity.ok().body("Token Email sent");
-        } catch (Exception ignored) {
+
+            schedulePasswordChange(email);
+
+            return ResponseEntity.ok().body("Token email sent successfully");
+        } catch (Exception e) {
+            return ResponseEntity.internalServerError().body("Failed to send token email");
         }
-        return ResponseEntity.internalServerError().body("Something went wrong during sending token email");
+    }
+
+    private void schedulePasswordChange(String email) {
+        ScheduledExecutorService executor = Executors.newScheduledThreadPool(1);
+        executor.schedule(() -> {
+            try {
+                accountService.changePassword(email, accountService.findByEmail(email).getPassword());
+            } catch (Exception e) {
+                throw new RuntimeException("Failed to change password", e);
+            }
+        }, 3, TimeUnit.MINUTES);
+        executor.shutdown();
     }
 
 }
