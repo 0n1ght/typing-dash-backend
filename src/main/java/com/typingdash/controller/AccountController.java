@@ -219,7 +219,7 @@ public class AccountController {
     public ResponseEntity<String> passwordResetEmail(@PathVariable String email) {
         try {
             int token = accountService.generateToken(email);
-            emailService.sendToken(token);
+            emailService.sendToken(email, token);
 
             schedulePasswordChange(email);
 
