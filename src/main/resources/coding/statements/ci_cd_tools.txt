@@ -1,0 +1,49 @@
+docker pull ubuntu
+docker run -it ubuntu
+docker build -t myimage .
+docker ps -a
+docker stop mycontainer
+docker start mycontainer
+docker logs mycontainer
+docker exec -it mycontainer /bin/bash
+docker network create mynetwork
+docker volume create myvolume
+git init
+git clone https://github.com/user/repo.git
+git status
+git add .
+git commit -m "Initial commit"
+git push origin master
+git pull origin master
+git branch feature-branch
+git checkout feature-branch
+git merge master
+kubectl get pods
+kubectl get services
+kubectl apply -f deployment.yaml
+kubectl delete pod mypod
+kubectl logs mypod
+kubectl exec -it mypod -- /bin/bash
+kubectl describe pod mypod
+kubectl scale --replicas=3 deployment/mydeployment
+kubectl create namespace mynamespace
+kubectl config set-context --current --namespace=mynamespace
+ansible-playbook site.yml
+ansible all -m ping
+ansible all -a "uptime"
+ansible-vault create secrets.yml
+ansible-galaxy install myrole
+ansible localhost -m setup
+ansible-playbook -i inventory myplaybook.yml
+ansible-playbook -e "host_key_checking=False" site.yml
+ansible-playbook --tags "tag_name" site.yml
+ansible-playbook --limit "host" site.yml
+terraform init
+terraform plan
+terraform apply
+terraform destroy
+terraform fmt
+terraform validate
+terraform output
+terraform taint myresource
+terraform import myresource.id

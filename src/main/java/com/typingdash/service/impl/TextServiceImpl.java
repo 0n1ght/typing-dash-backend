@@ -1,8 +1,6 @@
 package com.typingdash.service.impl;
 
-import com.typingdash.enums.Difficulty;
-import com.typingdash.enums.Language;
-import com.typingdash.enums.Letter;
+import com.typingdash.enums.*;
 import com.typingdash.service.TextService;
 import org.springframework.stereotype.Service;
 
@@ -14,26 +12,37 @@ import java.util.*;
 
 @Service
 public class TextServiceImpl implements TextService {
-    private final HashMap<Language, Map<Difficulty, LinkedList<String>>> words = new HashMap<>();
-    private final Map<Language, Map<Difficulty, LinkedList<String>>> sentences = new HashMap<>();
+    private final HashMap<Language, Map<Difficulty, LinkedList<String>>> generalWords = new HashMap<>();
+    private final Map<Language, Map<Difficulty, LinkedList<String>>> generalSentences = new HashMap<>();
+    private final Map<CodingLanguage, LinkedList<String>> codingWords = new HashMap<>();
+    private final Map<CodingLanguage, LinkedList<String>> codingStatements = new HashMap<>();
     private final Map<Letter, List<String>> practiceWords = new HashMap<>();
 
     public TextServiceImpl() throws IOException {
-        initializeWords();
-        initializeSentences();
+        initializeGeneralTexts();
+        initializeCodingTexts();
         initializePracticeWords();
     }
 
 
-    private void initializeWords() throws IOException {
+    private void initializeGeneralTexts() throws IOException {
+
         addWordsSet(Language.CHINESE, Path.of("src/main/resources/words/chinese"));
         addWordsSet(Language.ENGLISH, Path.of("src/main/resources/words/english"));
         addWordsSet(Language.GERMAN, Path.of("src/main/resources/words/german"));
         addWordsSet(Language.POLISH, Path.of("src/main/resources/words/polish"));
         addWordsSet(Language.RUSSIAN, Path.of("src/main/resources/words/russian"));
         addWordsSet(Language.SPANISH, Path.of("src/main/resources/words/spanish"));
+
+        addSentencesSet(Language.CHINESE, Path.of("src/main/resources/sentences/chinese"));
+        addSentencesSet(Language.ENGLISH, Path.of("src/main/resources/sentences/english"));
+        addSentencesSet(Language.GERMAN, Path.of("src/main/resources/sentences/german"));
+        addSentencesSet(Language.POLISH, Path.of("src/main/resources/sentences/polish"));
+        addSentencesSet(Language.RUSSIAN, Path.of("src/main/resources/sentences/russian"));
+        addSentencesSet(Language.SPANISH, Path.of("src/main/resources/sentences/spanish"));
     }
 
+    //TODO: addWordsSet+addSentencesSet = addGeneralText(TextType textType)
     private void addWordsSet(Language language, Path generalPath) throws IOException {
         Map<Difficulty, LinkedList<String>> words = new HashMap<>();
 
@@ -62,17 +71,7 @@ public class TextServiceImpl implements TextService {
         }
         words.put(Difficulty.HARD, hardWords);
 
-        this.words.put(language, words);
-    }
-
-
-    private void initializeSentences() throws IOException {
-        addSentencesSet(Language.CHINESE, Path.of("src/main/resources/sentences/chinese"));
-        addSentencesSet(Language.ENGLISH, Path.of("src/main/resources/sentences/english"));
-        addSentencesSet(Language.GERMAN, Path.of("src/main/resources/sentences/german"));
-        addSentencesSet(Language.POLISH, Path.of("src/main/resources/sentences/polish"));
-        addSentencesSet(Language.RUSSIAN, Path.of("src/main/resources/sentences/russian"));
-        addSentencesSet(Language.SPANISH, Path.of("src/main/resources/sentences/spanish"));
+        this.generalWords.put(language, words);
     }
 
     private void addSentencesSet(Language language, Path generalPath) throws IOException {
@@ -103,7 +102,67 @@ public class TextServiceImpl implements TextService {
         }
         sentences.put(Difficulty.HARD, hardSentences);
 
-        this.sentences.put(language, sentences);
+        this.generalSentences.put(language, sentences);
+    }
+
+
+    private void initializeCodingTexts() throws IOException {
+
+        addCodingText(CodingLanguage.PYTHON, Path.of("src/main/resources/coding/keywords/python.txt"), TextType.WORDS);
+        addCodingText(CodingLanguage.JAVA, Path.of("src/main/resources/coding/keywords/java.txt"), TextType.WORDS);
+        addCodingText(CodingLanguage.JAVA_SCRIPT, Path.of("src/main/resources/coding/keywords/javascript.txt"), TextType.WORDS);
+        addCodingText(CodingLanguage.TYPE_SCRIPT, Path.of("src/main/resources/coding/keywords/typescript.txt"), TextType.WORDS);
+        addCodingText(CodingLanguage.C, Path.of("src/main/resources/coding/keywords/c.txt"), TextType.WORDS);
+        addCodingText(CodingLanguage.OBJECTIVE_C, Path.of("src/main/resources/coding/keywords/objective_c.txt"), TextType.WORDS);
+        addCodingText(CodingLanguage.C_PP, Path.of("src/main/resources/coding/keywords/c_pp.txt"), TextType.WORDS);
+        addCodingText(CodingLanguage.C_SHARP, Path.of("src/main/resources/coding/keywords/c_sharp.txt"), TextType.WORDS);
+        addCodingText(CodingLanguage.GO, Path.of("src/main/resources/coding/keywords/go.txt"), TextType.WORDS);
+        addCodingText(CodingLanguage.KOTLIN, Path.of("src/main/resources/coding/keywords/kotlin.txt"), TextType.WORDS);
+        addCodingText(CodingLanguage.PERL, Path.of("src/main/resources/coding/keywords/perl.txt"), TextType.WORDS);
+        addCodingText(CodingLanguage.PHP, Path.of("src/main/resources/coding/keywords/php.txt"), TextType.WORDS);
+        addCodingText(CodingLanguage.R, Path.of("src/main/resources/coding/keywords/r.txt"), TextType.WORDS);
+        addCodingText(CodingLanguage.RUBY, Path.of("src/main/resources/coding/keywords/ruby.txt"), TextType.WORDS);
+        addCodingText(CodingLanguage.SWIFT, Path.of("src/main/resources/coding/keywords/swift.txt"), TextType.WORDS);
+        addCodingText(CodingLanguage.RUST, Path.of("src/main/resources/coding/keywords/rust.txt"), TextType.WORDS);
+        addCodingText(CodingLanguage.ASSEMBLY, Path.of("src/main/resources/coding/keywords/assembly.txt"), TextType.WORDS);
+        addCodingText(CodingLanguage.CMD, Path.of("src/main/resources/coding/keywords/cmd.txt"), TextType.WORDS);
+        addCodingText(CodingLanguage.TERMINAL, Path.of("src/main/resources/coding/keywords/terminal.txt"), TextType.WORDS);
+
+        addCodingText(CodingLanguage.PYTHON, Path.of("src/main/resources/coding/statements/python.txt"), TextType.SENTENCES);
+        addCodingText(CodingLanguage.JAVA, Path.of("src/main/resources/coding/statements/java.txt"), TextType.SENTENCES);
+        addCodingText(CodingLanguage.JAVA_SCRIPT, Path.of("src/main/resources/coding/statements/javascript.txt"), TextType.SENTENCES);
+        addCodingText(CodingLanguage.TYPE_SCRIPT, Path.of("src/main/resources/coding/statements/typescript.txt"), TextType.SENTENCES);
+        addCodingText(CodingLanguage.C, Path.of("src/main/resources/coding/statements/c.txt"), TextType.SENTENCES);
+        addCodingText(CodingLanguage.OBJECTIVE_C, Path.of("src/main/resources/coding/statements/objective_c.txt"), TextType.SENTENCES);
+        addCodingText(CodingLanguage.C_PP, Path.of("src/main/resources/coding/statements/c_pp.txt"), TextType.SENTENCES);
+        addCodingText(CodingLanguage.C_SHARP, Path.of("src/main/resources/coding/statements/c_sharp.txt"), TextType.SENTENCES);
+        addCodingText(CodingLanguage.GO, Path.of("src/main/resources/coding/statements/go.txt"), TextType.SENTENCES);
+        addCodingText(CodingLanguage.KOTLIN, Path.of("src/main/resources/coding/statements/kotlin.txt"), TextType.SENTENCES);
+        addCodingText(CodingLanguage.PERL, Path.of("src/main/resources/coding/statements/perl.txt"), TextType.SENTENCES);
+        addCodingText(CodingLanguage.PHP, Path.of("src/main/resources/coding/statements/php.txt"), TextType.SENTENCES);
+        addCodingText(CodingLanguage.R, Path.of("src/main/resources/coding/statements/r.txt"), TextType.SENTENCES);
+        addCodingText(CodingLanguage.RUBY, Path.of("src/main/resources/coding/statements/ruby.txt"), TextType.SENTENCES);
+        addCodingText(CodingLanguage.SWIFT, Path.of("src/main/resources/coding/statements/swift.txt"), TextType.SENTENCES);
+        addCodingText(CodingLanguage.RUST, Path.of("src/main/resources/coding/statements/rust.txt"), TextType.SENTENCES);
+        addCodingText(CodingLanguage.ASSEMBLY, Path.of("src/main/resources/coding/statements/assembly.txt"), TextType.SENTENCES);
+        addCodingText(CodingLanguage.CI_CD_TOOLS, Path.of("src/main/resources/coding/statements/ci_cd_tools.txt"), TextType.SENTENCES);
+    }
+
+    private void addCodingText(CodingLanguage language, Path generalPath, TextType textType) throws IOException {
+
+        BufferedReader reader;
+        String line;
+
+        LinkedList<String> textsToAdd = new LinkedList<>();
+        reader = new BufferedReader(new FileReader(generalPath+""));
+        while ((line = reader.readLine()) != null) {
+            textsToAdd.add(line.strip());
+        }
+
+        switch(textType) {
+            case WORDS -> this.codingWords.put(language, textsToAdd);
+            case SENTENCES -> this.codingStatements.put(language, textsToAdd);
+        }
     }
 
 
@@ -127,26 +186,32 @@ public class TextServiceImpl implements TextService {
 
 
     @Override
-    public List<String> generateWords(Language lang, Difficulty difficulty, int len) {
+    public List<String> generateText(Language lang, Difficulty difficulty, int len, TextType textType) {
         List res = new LinkedList();
 
-        List<String> textWords = words.get(lang).get(difficulty);
+        List<String> textList = switch (textType) {
+            case WORDS  -> generalWords.get(lang).get(difficulty);
+            case SENTENCES -> generalSentences.get(lang).get(difficulty);
+        };
         Random random = new Random();
         for (int i = 0; i < len; i++) {
-            res.add(textWords.get(random.nextInt(textWords.size())));
+            res.add(textList.get(random.nextInt(textList.size())));
         }
 
         return res;
     }
 
     @Override
-    public List<String> generateSentences(Language lang, Difficulty difficulty, int len) {
+    public List<String> generateCodingText(CodingLanguage lang, int len, TextType textType) {
         List res = new LinkedList();
 
-        LinkedList<String> textSentences = sentences.get(lang).get(difficulty);
+        List<String> textList = switch (textType) {
+            case WORDS  -> codingWords.get(lang);
+            case SENTENCES -> codingStatements.get(lang);
+        };
         Random random = new Random();
         for (int i = 0; i < len; i++) {
-            res.add(textSentences.get(random.nextInt(textSentences.size())));
+            res.add(textList.get(random.nextInt(textList.size())));
         }
 
         return res;
@@ -154,12 +219,7 @@ public class TextServiceImpl implements TextService {
 
 
     @Override
-    public String generateTopicWords(Language lang, Difficulty difficulty, int len, String topic) { //todo
-        return null;
-    }
-
-    @Override
-    public String generateTopicSentences(Language lang, Difficulty difficulty, int len, String topic) { //todo
+    public String generateTopicText(Language lang, Difficulty difficulty, int len, String topic, TextType textType) { //todo
         return null;
     }
 

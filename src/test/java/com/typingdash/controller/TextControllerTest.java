@@ -3,6 +3,7 @@ package com.typingdash.controller;
 import com.typingdash.enums.Difficulty;
 import com.typingdash.enums.Language;
 import com.typingdash.enums.Letter;
+import com.typingdash.enums.TextType;
 import com.typingdash.service.TextService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -38,7 +39,7 @@ public class TextControllerTest {
     @Test
     @DisplayName("words are generated properly")
     public void testGetWords() throws Exception {
-        when(textService.generateWords(Language.ENGLISH, Difficulty.EASY, 3)).thenReturn(List.of("word1", "word2", "word3"));
+        when(textService.generateText(Language.ENGLISH, Difficulty.EASY, 3, TextType.WORDS)).thenReturn(List.of("word1", "word2", "word3"));
 
         mockMvc.perform(get("/text/generate-words/ENGLISH/EASY/3"))
                 .andExpect(status().isOk());
@@ -47,7 +48,7 @@ public class TextControllerTest {
     @Test
     @DisplayName("sentences are generated properly")
     public void testGetSentences() throws Exception {
-        when(textService.generateSentences(Language.ENGLISH, Difficulty.EASY, 3)).thenReturn(List.of("sentence1", "sentence2", "sentence3"));
+        when(textService.generateText(Language.ENGLISH, Difficulty.EASY, 3, TextType.SENTENCES)).thenReturn(List.of("sentence1", "sentence2", "sentence3"));
 
         mockMvc.perform(get("/text/generate-sentences/ENGLISH/EASY/3"))
                 .andExpect(status().isOk());
@@ -74,7 +75,7 @@ public class TextControllerTest {
     @Test
     @DisplayName("words generation returns exception properly")
     public void testGetWordsException() throws Exception {
-        when(textService.generateWords(Language.ENGLISH, Difficulty.EASY, 3)).thenThrow(new RuntimeException("Error"));
+        when(textService.generateText(Language.ENGLISH, Difficulty.EASY, 3, TextType.WORDS)).thenThrow(new RuntimeException("Error"));
 
         mockMvc.perform(get("/text/generate-words/ENGLISH/EASY/3"))
                 .andExpect(status().isInternalServerError());
@@ -83,7 +84,7 @@ public class TextControllerTest {
     @Test
     @DisplayName("sentences generation returns exception properly")
     public void testGetSentencesException() throws Exception {
-        when(textService.generateSentences(Language.ENGLISH, Difficulty.EASY, 3)).thenThrow(new RuntimeException("Error"));
+        when(textService.generateText(Language.ENGLISH, Difficulty.EASY, 3, TextType.SENTENCES)).thenThrow(new RuntimeException("Error"));
 
         mockMvc.perform(get("/text/generate-sentences/ENGLISH/EASY/3"))
                 .andExpect(status().isInternalServerError());

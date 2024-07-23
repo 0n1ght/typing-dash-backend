@@ -1,0 +1,26 @@
+print("Hello, World!")
+x <- 5
+y <- 10
+z <- x + y
+print(z)
+name <- "Alice"
+age <- 30
+print(paste(name, "is", age, "years old."))
+numbers <- c(1, 2, 3, 4, 5)
+for (num in numbers) { print(num) }
+greet <- function(name) { paste("Hello,", name, "!") }
+message <- greet("Bob")
+print(message)
+for (i in 0:4) { print(i) }
+squares <- sapply(0:9, function(n) n^2)
+print(squares)
+person <- list(name="Charlie", age=25)
+print(person$name)
+person$age <- person$age + 1
+print(person$age)
+add <- function(a, b) { a + b }
+result <- add(3, 4)
+print(result)
+while (x < 20) { x <- x + 1; print(x) }
+print(sqrt(16))
+writeLines("Hello, file!", "file.txt")

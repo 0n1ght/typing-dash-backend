@@ -1,0 +1,29 @@
+#import <Foundation/Foundation.h>
+NSLog(@"Hello, World!");
+int x = 5;
+int y = 10;
+int z = x + y;
+NSLog(@"%d", z);
+NSString *name = @"Alice";
+int age = 30;
+NSLog(@"%@ is %d years old.", name, age);
+NSArray *numbers = @[@1, @2, @3, @4, @5];
+for (NSNumber *num in numbers) { NSLog(@"%@", num); }
+NSString *message = greet(@"Bob");
+NSLog(@"%@", message);
+if (x > y) { NSLog(@"x is greater than y"); }
+else { NSLog(@"x is not greater than y"); }
+for (int i = 0; i < 5; i++) { NSLog(@"%d", i); }
+NSMutableArray *squares = [NSMutableArray array];
+for (int i = 0; i < 10; i++) { [squares addObject:@(i * i)]; }
+NSLog(@"%@", squares);
+NSDictionary *person = @{@"name": @"Charlie", @"age": @25};
+NSLog(@"%@", person[@"name"]);
+int newAge = [person[@"age"] intValue] + 1;
+NSLog(@"%d", newAge);
+int add(int a, int b) { return a + b; }
+int result = add(3, 4);
+NSLog(@"%d", result);
+while (x < 20) { x++; NSLog(@"%d", x); }
+NSLog(@"%f", sqrt(16));
+NSString *fileContents = @"Hello, file!";

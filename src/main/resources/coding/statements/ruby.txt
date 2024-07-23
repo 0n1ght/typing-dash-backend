@@ -1,0 +1,28 @@
+puts "Hello, World!"
+x = 5
+y = 10
+z = x + y
+puts z
+name = "Alice"
+age = 30
+puts "#{name} is #{age} years old."
+numbers = [1, 2, 3, 4, 5]
+numbers.each { |num| puts num }
+def greet(name) "Hello, #{name}!" end
+message = greet("Bob")
+puts message
+if x > y puts "x is greater than y"
+else puts "x is not greater than y" end
+for i in 0..4 puts i end
+squares = (0..9).map { |n| n * n }
+puts squares
+person = { name: "Charlie", age: 25 }
+puts person[:name]
+person[:age] += 1
+puts person[:age]
+def add(a, b) a + b end
+result = add(3, 4)
+puts result
+while x < 20 x += 1 puts x end
+puts Math.sqrt(16)
+File.open("file.txt", "w") { |file| file.write("f") }

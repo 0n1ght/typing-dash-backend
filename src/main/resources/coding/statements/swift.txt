@@ -1,0 +1,34 @@
+print("Hello, World!")
+var x = 5
+var y = 10
+var z = x + y
+print(z)
+let name = "Alice"
+let age = 30
+print("\(name) is \(age) years old.")
+let numbers = [1, 2, 3, 4, 5]
+for num in numbers { print(num) }
+let message = greet(name: "Bob")
+print(message)
+if x > y { print("x is greater than y") }
+else { print("x is not greater than y") }
+for i in 0..<5 { print(i) }
+let squares = (0..<10).map { $0 * $0 }
+print(squares)
+struct Person { var name: String; var age: Int }
+var person = Person(name: "Charlie", age: 25)
+print(person.name)
+person.age += 1
+print(person.age)
+func add(a: Int, b: Int) -> Int { return a + b }
+let result = add(a: 3, b: 4)
+print(result)
+while x < 20 { x += 1; print(x) }
+print(sqrt(16.0))
+do {let fileContents = "Hello, file!"
+try fileContents.write(toFile: "file.txt")}
+catch {print("Error writing file")}
+let dictionary = ["key": "value"]
+print(dictionary["key"]!)
+let set: Set<Int> = [1, 2, 3]
+print(set.contains(2))

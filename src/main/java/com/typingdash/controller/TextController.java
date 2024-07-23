@@ -1,8 +1,6 @@
 package com.typingdash.controller;
 
-import com.typingdash.enums.Difficulty;
-import com.typingdash.enums.Language;
-import com.typingdash.enums.Letter;
+import com.typingdash.enums.*;
 import com.typingdash.service.ChatGptService;
 import com.typingdash.service.TextService;
 import lombok.RequiredArgsConstructor;
@@ -19,23 +17,26 @@ public class TextController {
     private final TextService textService;
     private final ChatGptService chatGptService;
 
-    @GetMapping("/generate-words/{lang}/{difficulty}/{len}")
-    public ResponseEntity<?> getWords(@PathVariable Language lang, @PathVariable Difficulty difficulty, @PathVariable int len) {
+    @GetMapping("/generate-normal-text/{textType}/{lang}/{difficulty}/{len}")
+    public ResponseEntity<?> getNormalText(@PathVariable TextType textType, @PathVariable Language lang, @PathVariable Difficulty difficulty, @PathVariable int len) {
+        System.out.println("1");
 
         try {
-            return ResponseEntity.ok(textService.generateWords(lang, difficulty, len));
+            System.out.println("2");
+            return ResponseEntity.ok(textService.generateText(lang, difficulty, len, TextType.WORDS));
         } catch (Exception e) {
+            System.out.println("3");
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error generating words: \" + e.getMessage()");
         }
     }
 
-    @GetMapping("/generate-sentences/{lang}/{difficulty}/{len}")
-    public ResponseEntity<?> getSentences(@PathVariable Language lang, @PathVariable Difficulty difficulty, @PathVariable int len) {
+    @GetMapping("/generate-coding-text/{textType}/{lang}/{len}")
+    public ResponseEntity<?> getCodingText(@PathVariable TextType textType, @PathVariable CodingLanguage lang, @PathVariable int len) {
 
         try {
-            return ResponseEntity.ok(textService.generateSentences(lang, difficulty, len));
+            return ResponseEntity.ok(textService.generateCodingText(lang, len, textType));
         } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error generating sentences: \" + e.getMessage()");
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error generating words: \" + e.getMessage()");
         }
     }
 
@@ -69,4 +70,6 @@ public class TextController {
             return ResponseEntity.status(500).body("Error generating text: " + e.getMessage());
         }
     }
+
+
 }

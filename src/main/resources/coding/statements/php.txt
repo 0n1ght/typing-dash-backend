@@ -1,0 +1,29 @@
+<?php?>
+echo "Hello, World!";
+$x = 5;
+$y = 10;
+$z = $x + $y;
+echo $z;
+$name = "Alice";
+$age = 30;
+echo "$name is $age years old.";
+$numbers = [1, 2, 3, 4, 5];
+foreach ($numbers as $num) { echo $num; }
+function greet($name) { return "Hello, $name!"; }
+$message = greet("Bob");
+echo $message;
+if ($x > $y) { echo "x is greater than y"; }
+else { echo "x is not greater than y"; }
+for ($i = 0; $i < 5; $i++) { echo $i; }
+$squares = array_map(function($n) { return $n * $n; }, range(0, 9));
+print_r($squares);
+$person = ["name" => "Charlie", "age" => 25];
+echo $person["name"];
+$person["age"] += 1;
+echo $person["age"];
+function add($a, $b) { return $a + $b; }
+$result = add(3, 4);
+echo $result;
+while ($x < 20) { $x++; echo $x; }
+echo sqrt(16);
+file_put_contents("file.txt", "Hello, file!");

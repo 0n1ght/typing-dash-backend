@@ -1,0 +1,28 @@
+print("Hello, World!")
+x = 5
+y = 10
+z = x + y
+print(z)
+name = "Alice"
+age = 30
+print(f"{name} is {age} years old.")
+numbers = [1, 2, 3, 4, 5]
+for num in numbers: print(num)
+def greet(name): return f"Hello, {name}!"
+message = greet("Bob")
+print(message)
+if x > y: print("x is greater than y")
+else: print("x is not greater than y")
+for i in range(5): print(i)
+squares = [n**2 for n in range(10)]
+print(squares)
+person = {"name": "Charlie", "age": 25}
+print(person["name"])
+person["age"] += 1
+print(person)
+def add(a, b): return a + b
+result = add(3, 4)
+print(result)
+while x < 20: x += 1; print(x)
+from math import sqrt
+print(sqrt(16))

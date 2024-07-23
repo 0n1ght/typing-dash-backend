@@ -3,6 +3,7 @@ package com.typingdash.service.impl;
 import com.typingdash.enums.Difficulty;
 import com.typingdash.enums.Language;
 import com.typingdash.enums.Letter;
+import com.typingdash.enums.TextType;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
@@ -42,13 +43,13 @@ public class TextServiceImplTest {
 
     @Test
     public void testGenerateWords() {
-        List<String> words = textService.generateWords(Language.ENGLISH, Difficulty.EASY, 2);
+        List<String> words = textService.generateText(Language.ENGLISH, Difficulty.EASY, 2, TextType.WORDS);
         assertEquals(2, words.size());
     }
 
     @Test
     public void testGenerateSentences() {
-        List<String> sentences = textService.generateSentences(Language.ENGLISH, Difficulty.EASY, 2);
+        List<String> sentences = textService.generateText(Language.ENGLISH, Difficulty.EASY, 2, TextType.SENTENCES);
         assertEquals(2, sentences.size());
     }
 

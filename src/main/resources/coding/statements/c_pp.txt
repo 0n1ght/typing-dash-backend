@@ -1,0 +1,31 @@
+#include <iostream>
+int main() {
+std::cout << "Hello, World!" << std::endl;
+int x = 5;
+int y = 10;
+int z = x + y;
+std::cout << z << std::endl;
+std::string name = "Alice";
+int age = 30;
+std::cout << name << " is " << age << " years old." << std::endl;
+int numbers[] = {1, 2, 3, 4, 5};
+for (int num : numbers) { std::cout << num << std::endl; }
+std::string message = greet("Bob");
+std::cout << message << std::endl;
+if (x > y) { std::cout << "x is greater than y" << std::endl; }
+else { std::cout << "x is not greater than y" << std::endl; }
+for (int i = 0; i < 5; i++) { std::cout << i << std::endl; }
+int squares[10];
+for (int i = 0; i < 10; i++) { squares[i] = i * i; }
+struct Person { std::string name; int age; };
+Person person;
+person.name = "Charlie";
+person.age = 25;
+std::cout << person.name << std::endl;
+person.age += 1;
+std::cout << person.age << std::endl;
+int add(int a, int b) { return a + b; }
+int result = add(3, 4);
+std::cout << result << std::endl;
+while (x < 20) { x++; std::cout << x << std::endl; }
+#include <cmath>

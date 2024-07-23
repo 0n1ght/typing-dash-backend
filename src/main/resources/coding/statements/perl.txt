@@ -1,0 +1,29 @@
+print "Hello, World!\n";
+my $x = 5;
+my $y = 10;
+my $z = $x + $y;
+print "$z\n";
+my $name = "Alice";
+my $age = 30;
+print "$name is $age years old.\n";
+my @numbers = (1, 2, 3, 4, 5);
+foreach my $num (@numbers) { print "$num\n"; }
+sub greet { my ($name) = @_; return "Hello, $name!"; }
+my $message = greet("Bob");
+print "$message\n";
+for (my $i = 0; $i < 5; $i++) { print "$i\n"; }
+my @squares = map { $_ * $_ } (0..9);
+print "@squares\n";
+my %person = (name => "Charlie", age => 25);
+print "$person{name}\n";
+$person{age} += 1;
+print "$person{age}\n";
+sub add { my ($a, $b) = @_; return $a + $b; }
+my $result = add(3, 4);
+print "$result\n";
+while ($x < 20) { $x++; print "$x\n"; }
+use POSIX;
+print sqrt(16) . "\n";
+open(my $fh, '>', "file.txt") or die "Could not open file 'file.txt' $!";
+print $fh "Hello, file!\n";
+close $fh;

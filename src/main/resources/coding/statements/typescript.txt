@@ -1,0 +1,28 @@
+console.log("Hello, World!")
+let x: number = 5
+let y: number = 10
+let z: number = x + y
+console.log(z)
+let name: string = "Alice"
+let age: number = 30
+console.log(`${name} is ${age} years old.`)
+let numbers: number[] = [1, 2, 3, 4, 5]
+numbers.forEach(num => console.log(num))
+function greet(name: string): string { return `Hello, ${name}!` }
+let message: string = greet("Bob")
+console.log(message)
+for (let i: number = 0; i < 5; i++) { console.log(i) }
+let squares: number[] = Array.from({length: 10}, (v, k) => k * k)
+console.log(squares)
+interface Person { name: string; age: number }
+let person: Person = { name: "Charlie", age: 25 }
+console.log(person.name)
+person.age += 1
+console.log(person.age)
+function add(a: number, b: number): number { return a + b }
+let result: number = add(3, 4)
+console.log(result)
+while (x < 20) { x++; console.log(x) }
+console.log(Math.sqrt(16))
+let fileContent: string = "Hello, file!"
+console.log(fileContent)

@@ -1,0 +1,44 @@
+console.log("Hello, World!");
+let x = 5;
+let y = 10;
+let z = x + y;
+console.log(z);
+let name = "Alice";
+let age = 30;
+console.log(${name} is ${age} years old.);
+let numbers = [1, 2, 3, 4, 5];
+numbers.forEach(num => console.log(num));
+let message = greet("Bob");
+console.log(message);
+else { console.log("x is not greater than y"); }
+for (let i = 0; i < 5; i++) { console.log(i); }
+console.log(squares);
+let person = { name: "Charlie", age: 25 };
+console.log(person.name);
+person.age += 1;
+console.log(person);
+function add(a, b) { return a + b; }
+let result = add(3, 4);
+console.log(result);
+while (x < 20) { x++; console.log(x); }
+let date = new Date();
+console.log(date);
+fetch('https://api.example.com/data')
+.then(response => response.json())
+.then(data => console.log(data))
+.catch(error => console.error('Error:', error));
+let set = new Set([1, 2, 3]);
+set.add(4);
+console.log(set);
+let map = new Map();
+map.set('key', 'value');
+console.log(map.get('key'));
+promise.then(result => console.log(result));
+let obj = Object.create(person);
+obj.name = "Dave";
+console.log(obj);
+let array = [1, 2, 3, 4, 5];
+array.push(6);
+console.log(array);
+let [a, b] = [1, 2];
+console.log(a, b);

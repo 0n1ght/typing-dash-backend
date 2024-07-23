@@ -1,0 +1,32 @@
+fn main() {}
+println!("Hello, World!");
+let x = 5;
+let y = 10;
+let z = x + y;
+println!("{}", z);
+let name = "Alice";
+let age = 30;
+println!("{} is {} years old.", name, age);
+let numbers = [1, 2, 3, 4, 5];
+for num in &numbers { println!("{}", num); }
+fn greet(name: &str) -> String { format!("Hello, {}!", name) }
+let message = greet("Bob");
+println!("{}", message);
+for i in 0..5 { println!("{}", i); }
+let squares: Vec<i32> = (0..10).map(|n| n * n).collect();
+println!("{:?}", squares);
+struct Person { name: String, age: i32 }
+let mut person = Person { name: String::from("Charlie"), age: 25 };
+println!("{}", person.name);
+person.age += 1;
+println!("{}", person.age);
+fn add(a: i32, b: i32) -> i32 { a + b }
+let result = add(3, 4);
+println!("{}", result);
+let mut x = 5;
+while x < 20 { x += 1; println!("{}", x); }
+println!("{}", (16.0f64).sqrt());
+use std::fs::File;
+use std::io::Write;
+let mut file = File::create("file.txt").unwrap();
+file.write_all(b"Hello, file!").unwrap();

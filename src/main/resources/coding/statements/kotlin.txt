@@ -1,0 +1,29 @@
+println("Hello, World!")
+val x = 5
+val y = 10
+val z = x + y
+println(z)
+val name = "Alice"
+val age = 30
+println("$name is $age years old.")
+val numbers = listOf(1, 2, 3, 4, 5)
+numbers.forEach { num -> println(num) }
+fun greet(name: String) = "Hello, $name!"
+val message = greet("Bob")
+println(message)
+if (x > y) { println("x is greater than y") }
+else { println("x is not greater than y") }
+for (i in 0..4) { println(i) }
+val squares = (0..9).map { it * it }
+println(squares)
+data class Person(var name: String, var age: Int)
+val person = Person("Charlie", 25)
+println(person.name)
+person.age += 1
+println(person.age)
+fun add(a: Int, b: Int) = a + b
+val result = add(3, 4)
+println(result)
+while (x < 20) { x++; println(x) }
+println(Math.sqrt(16.0))
+File("file.txt").writeText("Hello, file!")

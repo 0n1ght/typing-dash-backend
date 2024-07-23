@@ -1,0 +1,29 @@
+section .data
+hello db 'Hello, World!', 0
+section .bss
+resb 1
+section .text
+global _start
+_start:
+mov eax, 4
+mov ebx, 1
+mov ecx, hello
+mov edx, 13
+int 0x80
+mov eax, 1
+xor ebx, ebx
+int 0x80
+mov eax, 5
+add eax, 2
+sub eax, 1
+inc eax
+dec eax
+cmp eax, 7
+jg greater
+jl less
+je equal
+greater: nop
+less: nop
+equal: nop
+call function
+function: ret

@@ -1,0 +1,30 @@
+System.out.println("Hello, World!");
+int x = 5;
+int y = 10;
+int z = x + y;
+System.out.println(z);
+String name = "Alice";
+int age = 30;
+System.out.println(name + " is " + age + " years old.");
+int[] numbers = {1, 2, 3, 4, 5};
+for (int num : numbers) { System.out.println(num); }
+public static String greet(String name) { return "Hello, " + name + "!"; }
+String message = greet("Bob");
+System.out.println(message);
+if (x > y) { System.out.println("x is greater than y"); }
+else { System.out.println("x is not greater than y"); }
+for (int i = 0; i < 5; i++) { System.out.println(i); }
+int[] squares = new int[10];
+for (int i = 0; i < 10; i++) { squares[i] = i * i; }
+for (int square : squares) { System.out.println(square); }
+HashMap<String, Integer> person = new HashMap<>();
+person.put("name", "Charlie");
+person.put("age", 25);
+System.out.println(person.get("name"));
+person.put("age", person.get("age") + 1);
+System.out.println(person);
+public static int add(int a, int b) { return a + b; }
+int result = add(3, 4);
+System.out.println(result);
+while (x < 20) { x++; System.out.println(x); }
+System.out.println(Math.sqrt(16));
