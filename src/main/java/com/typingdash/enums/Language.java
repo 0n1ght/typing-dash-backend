@@ -6,5 +6,6 @@ public enum Language {
     CHINESE,
     GERMAN,
     SPANISH,
-    RUSSIAN
+    RUSSIAN,
+    FRENCH
 }

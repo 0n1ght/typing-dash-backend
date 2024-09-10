@@ -19,13 +19,10 @@ public class TextController {
 
     @GetMapping("/generate-normal-text/{textType}/{lang}/{difficulty}/{len}")
     public ResponseEntity<?> getNormalText(@PathVariable TextType textType, @PathVariable Language lang, @PathVariable Difficulty difficulty, @PathVariable int len) {
-        System.out.println("1");
 
         try {
-            System.out.println("2");
-            return ResponseEntity.ok(textService.generateText(lang, difficulty, len, TextType.WORDS));
+            return ResponseEntity.ok(textService.generateText(lang, difficulty, len, textType));
         } catch (Exception e) {
-            System.out.println("3");
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error generating words: \" + e.getMessage()");
         }
     }

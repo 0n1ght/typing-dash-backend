@@ -33,6 +33,7 @@ public class TextServiceImpl implements TextService {
         addWordsSet(Language.POLISH, Path.of("src/main/resources/words/polish"));
         addWordsSet(Language.RUSSIAN, Path.of("src/main/resources/words/russian"));
         addWordsSet(Language.SPANISH, Path.of("src/main/resources/words/spanish"));
+        addWordsSet(Language.FRENCH, Path.of("src/main/resources/words/french"));
 
         addSentencesSet(Language.CHINESE, Path.of("src/main/resources/sentences/chinese"));
         addSentencesSet(Language.ENGLISH, Path.of("src/main/resources/sentences/english"));
@@ -40,6 +41,7 @@ public class TextServiceImpl implements TextService {
         addSentencesSet(Language.POLISH, Path.of("src/main/resources/sentences/polish"));
         addSentencesSet(Language.RUSSIAN, Path.of("src/main/resources/sentences/russian"));
         addSentencesSet(Language.SPANISH, Path.of("src/main/resources/sentences/spanish"));
+        addSentencesSet(Language.FRENCH, Path.of("src/main/resources/sentences/french"));
     }
 
     //TODO: addWordsSet+addSentencesSet = addGeneralText(TextType textType)
