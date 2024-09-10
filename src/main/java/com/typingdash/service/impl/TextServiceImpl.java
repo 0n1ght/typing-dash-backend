@@ -33,34 +33,23 @@ public class TextServiceImpl implements TextService {
         }
     }
 
-    //TODO: addWordsSet+addSentencesSet = addGeneralText(TextType textType)
     private void addWordsSet(Language language, Path generalPath) throws IOException {
         Map<Difficulty, LinkedList<String>> words = new HashMap<>();
 
-        BufferedReader reader;
-        String line;
+        for (Difficulty difficulty : Difficulty.values()) {
+            LinkedList<String> words2Add = new LinkedList<>();
 
-        //easy
-        LinkedList<String> easyWords = new LinkedList<>();
-        reader = new BufferedReader(new FileReader(generalPath+"/easyWords.txt"));
-        while ((line = reader.readLine()) != null) {
-            easyWords.add(line.strip());
+            Path filePath = generalPath.resolve(difficulty.toString().toLowerCase() + "Words.txt");
+
+            try (BufferedReader reader = new BufferedReader(new FileReader(filePath.toFile()))) {
+                String line;
+                while ((line = reader.readLine()) != null) {
+                    words2Add.add(line.strip());
+                }
+            }
+
+            words.put(difficulty, words2Add);
         }
-        words.put(Difficulty.EASY, easyWords);
-        //medium
-        LinkedList<String> mediumWords = new LinkedList<>();
-        reader = new BufferedReader(new FileReader(generalPath+"/mediumWords.txt"));
-        while ((line = reader.readLine()) != null) {
-            mediumWords.add(line.strip());
-        }
-        words.put(Difficulty.MEDIUM, mediumWords);
-        //hard
-        LinkedList<String> hardWords = new LinkedList<>();
-        reader = new BufferedReader(new FileReader(generalPath+"/hardWords.txt"));
-        while ((line = reader.readLine()) != null) {
-            hardWords.add(line.strip());
-        }
-        words.put(Difficulty.HARD, hardWords);
 
         this.generalWords.put(language, words);
     }
