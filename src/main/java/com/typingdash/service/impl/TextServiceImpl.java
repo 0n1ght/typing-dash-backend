@@ -27,21 +27,10 @@ public class TextServiceImpl implements TextService {
 
     private void initializeGeneralTexts() throws IOException {
 
-        addWordsSet(Language.CHINESE, Path.of("src/main/resources/words/chinese"));
-        addWordsSet(Language.ENGLISH, Path.of("src/main/resources/words/english"));
-        addWordsSet(Language.GERMAN, Path.of("src/main/resources/words/german"));
-        addWordsSet(Language.POLISH, Path.of("src/main/resources/words/polish"));
-        addWordsSet(Language.RUSSIAN, Path.of("src/main/resources/words/russian"));
-        addWordsSet(Language.SPANISH, Path.of("src/main/resources/words/spanish"));
-        addWordsSet(Language.FRENCH, Path.of("src/main/resources/words/french"));
-
-        addSentencesSet(Language.CHINESE, Path.of("src/main/resources/sentences/chinese"));
-        addSentencesSet(Language.ENGLISH, Path.of("src/main/resources/sentences/english"));
-        addSentencesSet(Language.GERMAN, Path.of("src/main/resources/sentences/german"));
-        addSentencesSet(Language.POLISH, Path.of("src/main/resources/sentences/polish"));
-        addSentencesSet(Language.RUSSIAN, Path.of("src/main/resources/sentences/russian"));
-        addSentencesSet(Language.SPANISH, Path.of("src/main/resources/sentences/spanish"));
-        addSentencesSet(Language.FRENCH, Path.of("src/main/resources/sentences/french"));
+        for (Language lang : Language.values()) {
+            addWordsSet(lang, Path.of("src/main/resources/words/"+lang.toString().toLowerCase()));
+            addSentencesSet(lang, Path.of("src/main/resources/sentences/"+lang.toString().toLowerCase()));
+        }
     }
 
     //TODO: addWordsSet+addSentencesSet = addGeneralText(TextType textType)
@@ -110,44 +99,10 @@ public class TextServiceImpl implements TextService {
 
     private void initializeCodingTexts() throws IOException {
 
-        addCodingText(CodingLanguage.PYTHON, Path.of("src/main/resources/coding/keywords/python.txt"), TextType.WORDS);
-        addCodingText(CodingLanguage.JAVA, Path.of("src/main/resources/coding/keywords/java.txt"), TextType.WORDS);
-        addCodingText(CodingLanguage.JAVA_SCRIPT, Path.of("src/main/resources/coding/keywords/javascript.txt"), TextType.WORDS);
-        addCodingText(CodingLanguage.TYPE_SCRIPT, Path.of("src/main/resources/coding/keywords/typescript.txt"), TextType.WORDS);
-        addCodingText(CodingLanguage.C, Path.of("src/main/resources/coding/keywords/c.txt"), TextType.WORDS);
-        addCodingText(CodingLanguage.OBJECTIVE_C, Path.of("src/main/resources/coding/keywords/objective_c.txt"), TextType.WORDS);
-        addCodingText(CodingLanguage.C_PP, Path.of("src/main/resources/coding/keywords/c_pp.txt"), TextType.WORDS);
-        addCodingText(CodingLanguage.C_SHARP, Path.of("src/main/resources/coding/keywords/c_sharp.txt"), TextType.WORDS);
-        addCodingText(CodingLanguage.GO, Path.of("src/main/resources/coding/keywords/go.txt"), TextType.WORDS);
-        addCodingText(CodingLanguage.KOTLIN, Path.of("src/main/resources/coding/keywords/kotlin.txt"), TextType.WORDS);
-        addCodingText(CodingLanguage.PERL, Path.of("src/main/resources/coding/keywords/perl.txt"), TextType.WORDS);
-        addCodingText(CodingLanguage.PHP, Path.of("src/main/resources/coding/keywords/php.txt"), TextType.WORDS);
-        addCodingText(CodingLanguage.R, Path.of("src/main/resources/coding/keywords/r.txt"), TextType.WORDS);
-        addCodingText(CodingLanguage.RUBY, Path.of("src/main/resources/coding/keywords/ruby.txt"), TextType.WORDS);
-        addCodingText(CodingLanguage.SWIFT, Path.of("src/main/resources/coding/keywords/swift.txt"), TextType.WORDS);
-        addCodingText(CodingLanguage.RUST, Path.of("src/main/resources/coding/keywords/rust.txt"), TextType.WORDS);
-        addCodingText(CodingLanguage.ASSEMBLY, Path.of("src/main/resources/coding/keywords/assembly.txt"), TextType.WORDS);
-        addCodingText(CodingLanguage.CMD, Path.of("src/main/resources/coding/keywords/cmd.txt"), TextType.WORDS);
-        addCodingText(CodingLanguage.TERMINAL, Path.of("src/main/resources/coding/keywords/terminal.txt"), TextType.WORDS);
-
-        addCodingText(CodingLanguage.PYTHON, Path.of("src/main/resources/coding/statements/python.txt"), TextType.SENTENCES);
-        addCodingText(CodingLanguage.JAVA, Path.of("src/main/resources/coding/statements/java.txt"), TextType.SENTENCES);
-        addCodingText(CodingLanguage.JAVA_SCRIPT, Path.of("src/main/resources/coding/statements/javascript.txt"), TextType.SENTENCES);
-        addCodingText(CodingLanguage.TYPE_SCRIPT, Path.of("src/main/resources/coding/statements/typescript.txt"), TextType.SENTENCES);
-        addCodingText(CodingLanguage.C, Path.of("src/main/resources/coding/statements/c.txt"), TextType.SENTENCES);
-        addCodingText(CodingLanguage.OBJECTIVE_C, Path.of("src/main/resources/coding/statements/objective_c.txt"), TextType.SENTENCES);
-        addCodingText(CodingLanguage.C_PP, Path.of("src/main/resources/coding/statements/c_pp.txt"), TextType.SENTENCES);
-        addCodingText(CodingLanguage.C_SHARP, Path.of("src/main/resources/coding/statements/c_sharp.txt"), TextType.SENTENCES);
-        addCodingText(CodingLanguage.GO, Path.of("src/main/resources/coding/statements/go.txt"), TextType.SENTENCES);
-        addCodingText(CodingLanguage.KOTLIN, Path.of("src/main/resources/coding/statements/kotlin.txt"), TextType.SENTENCES);
-        addCodingText(CodingLanguage.PERL, Path.of("src/main/resources/coding/statements/perl.txt"), TextType.SENTENCES);
-        addCodingText(CodingLanguage.PHP, Path.of("src/main/resources/coding/statements/php.txt"), TextType.SENTENCES);
-        addCodingText(CodingLanguage.R, Path.of("src/main/resources/coding/statements/r.txt"), TextType.SENTENCES);
-        addCodingText(CodingLanguage.RUBY, Path.of("src/main/resources/coding/statements/ruby.txt"), TextType.SENTENCES);
-        addCodingText(CodingLanguage.SWIFT, Path.of("src/main/resources/coding/statements/swift.txt"), TextType.SENTENCES);
-        addCodingText(CodingLanguage.RUST, Path.of("src/main/resources/coding/statements/rust.txt"), TextType.SENTENCES);
-        addCodingText(CodingLanguage.ASSEMBLY, Path.of("src/main/resources/coding/statements/assembly.txt"), TextType.SENTENCES);
-        addCodingText(CodingLanguage.CI_CD_TOOLS, Path.of("src/main/resources/coding/statements/ci_cd_tools.txt"), TextType.SENTENCES);
+        for (CodingLanguage lang : CodingLanguage.values()) {
+            addCodingText(lang, Path.of("src/main/resources/coding/keywords/"+lang.toString().toLowerCase()+".txt"), TextType.WORDS);
+            addCodingText(lang, Path.of("src/main/resources/coding/statements/"+lang.toString().toLowerCase()+".txt"), TextType.SENTENCES);
+        }
     }
 
     private void addCodingText(CodingLanguage language, Path generalPath, TextType textType) throws IOException {

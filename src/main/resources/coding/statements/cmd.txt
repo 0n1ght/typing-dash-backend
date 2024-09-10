@@ -1,0 +1,40 @@
+dir /w
+cd C:\Path\To\Directory
+mkdir NewFolder
+rmdir FolderName
+del filename.ext
+copy file1.txt file2.txt
+xcopy source destination /s
+move file.txt D:\NewFolder
+ren oldname.txt newname.txt
+type file.txt
+cls
+echo Hello, World!
+pause
+exit
+attrib +r file.txt
+format D:
+chkdsk C: /f
+diskpart
+sfc /scannow
+ipconfig
+ping www.example.com
+tracert www.example.com
+netstat -an
+tasklist
+taskkill /PID 1234
+shutdown /s /t 60
+systeminfo
+ver
+set VAR=value
+assoc .txt=txtfile
+reg query HKLM\Software\Microsoft
+net user username /add
+net localgroup Administrators username /add
+net share sharename=C:\Path
+net start serviceName
+net stop serviceName
+powercfg /a
+wmic cpu get name
+cls
+fc file1.txt file2.txt

@@ -1,0 +1,40 @@
+clone
+branch
+merge
+container
+image
+build
+deploy
+pipeline
+workflow
+trigger
+artifact
+repository
+test
+stage
+job
+configuration
+yaml
+rollback
+environment
+script
+orchestration
+continuous integration
+continuous deployment
+continuous delivery
+versioning
+monitoring
+secrets
+provisioning
+scaling
+execution
+task
+hook
+parameter
+dependency
+check
+validation
+provision
+rollout
+synchronization
+automation

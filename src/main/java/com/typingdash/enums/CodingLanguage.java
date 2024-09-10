@@ -3,8 +3,8 @@ package com.typingdash.enums;
 public enum CodingLanguage {
     PYTHON,
     JAVA,
-    JAVA_SCRIPT,
-    TYPE_SCRIPT,
+    JAVASCRIPT,
+    TYPESCRIPT,
     C,
     OBJECTIVE_C,
     C_PP,

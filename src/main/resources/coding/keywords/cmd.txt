@@ -9,7 +9,6 @@ rename
 type
 cls
 echo
-set
 pause
 exit
 help
@@ -29,3 +28,6 @@ shutdown
 ipconfig
 ping
 netstat
+reg
+set
+assoc

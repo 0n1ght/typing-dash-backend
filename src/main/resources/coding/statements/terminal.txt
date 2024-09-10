@@ -1,0 +1,40 @@
+ls -l
+cd /path/to/directory
+pwd
+mkdir new_directory
+rmdir directory
+rm file
+cp source destination
+mv source destination
+touch filename
+echo "text"
+cat file
+more file
+less file
+head file
+tail file
+grep pattern file
+find /path -name filename
+locate filename
+which command
+chmod permissions file
+chown user:group file
+ps aux
+top
+kill PID
+pkill process_name
+killall process_name
+sudo command
+apt-get update
+apt-get install package
+yum install package
+brew install package
+docker run image
+git clone repository
+ssh user@host
+scp file user@host:/path
+curl URL
+wget URL
+tar -cvf archive.tar file
+gzip file
+unzip archive.zip
